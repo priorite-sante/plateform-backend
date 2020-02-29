@@ -14,17 +14,19 @@ router.post("/create_user", async (req, res)=> {
     request = req.body
 
     
-     db.getDB().collection('users').insertOne(request ,(err, status)=>{
+     db.getDB().collection('users').insertOne(request ,(err, msg)=>{
+          if(err){
+              console.error(err)
+              res.sendStatus(500)
+          } else{
+            console.log(request+ ' was insert' + msg)
+            res.sendStatus(200)
+          }
          
-         console.log(request+ ' was insert' + status)
      })
 
 
-     await db.getDB().collection('users').find({}).toArray((err, docs)=>{
-
-        res.send(docs)
-
-     })
+  
 
     
 

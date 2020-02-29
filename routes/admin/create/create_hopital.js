@@ -16,15 +16,15 @@ router.post("/create_hospital", async (req, res)=> {
     
      db.getDB().collection('hospitals').insertOne(request ,(err, status)=>{
          
-         console.log(request+ ' was insert' + status)
-     })
+        if(err){
+            console.error(err)
+            res.sendStatus(500)
+        } else{
+          console.log(request+ ' was insert' + msg)
+          res.sendStatus(200)
+        }
 
-
-     await db.getDB().collection('hospitals').find({}).toArray((err, docs)=>{
-
-        res.send(docs)
-
-     })
+    })
 
     
 

@@ -1,13 +1,20 @@
-const moongoDb = require('mongodb')
 const express = require('express')
-const bodyParser = require('body-parser')
 const db = require("./DB/db");
 
 ///routes
 ///
 ///
+
+///ADMIN
 const createUser = require("./routes/admin/create/create_user")
 const createHostpital = require("./routes/admin/create/create_hopital")
+const adminUserSearch = require("./routes/admin/find/find_user")
+
+///HOSPITAL
+const hospital_search_user = require("./routes/hospital/users/search_user")
+
+
+
 
 
 
@@ -19,8 +26,13 @@ const app = express()
 ///
 ///
 
+///ADMIN
 app.use(createUser)
 app.use(createHostpital)
+app.use(adminUserSearch)
+
+///HOSPITAL
+app.use(hospital_search_user)
 
 
 
