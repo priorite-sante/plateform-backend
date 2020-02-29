@@ -10,9 +10,9 @@ router.use(bodyParser.json())
 
 
 
-router.post('/hospital_user_update', async (req, res)=>{
+router.post('/hospital_user_update',  (req, res)=>{
     
-    var validated = req.body.validated
+    
     
     var id = req.body.id.toString()
 
@@ -20,8 +20,36 @@ router.post('/hospital_user_update', async (req, res)=>{
 
 
     
-    await  db.getDB().collection('users').findAndModify({
-        query : {id: objectId},
-        update: { $inc: { score: 1 } }
+    db.getDB().collection('users').find({_id: objectId}).toArray((err, theUser) => {
+        
+        if(err){
+            Console.error(err)
+        } else{
+            var validated = parseInt(theUser[0].validated, 10)
+
+            if( validated == 0){
+                db.getDB().collection('users').updateOne({_id: objectId}, {
+                    $inc: {
+                        "validated": 1
+                    }
+                })
+               
+            }else if(validated < 4){
+                db.getDB().collection('users').updateOne({_id: objectId}, {
+                    $inc: {
+                        "validated": +1
+                    }
+                })
+                
+            } else{
+                console.error('allready CHECKED')
+            }
+           
+            res.send("statut " + validated)
+
+        }
+
     })
 })
+
+module.exports = router

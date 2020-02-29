@@ -12,6 +12,7 @@ const adminUserSearch = require("./routes/admin/find/find_user")
 
 ///HOSPITAL
 const hospital_search_user = require("./routes/hospital/users/search_user")
+const hospitalUserUpdate = require("./routes/hospital/users/update_user")
 
 
 
@@ -33,6 +34,7 @@ app.use(adminUserSearch)
 
 ///HOSPITAL
 app.use(hospital_search_user)
+app.use(hospitalUserUpdate)
 
 
 
