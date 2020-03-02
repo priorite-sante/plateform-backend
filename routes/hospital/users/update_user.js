@@ -1,38 +1,42 @@
-const express = require('express')
-const db = require('../../../DB/db')
+const express = require('express');
+const db = require('../../../DB/db');
 
-const bodyParser = require('body-parser')
-
-
-const router = express.Router()
-
-router.use(bodyParser.json())
+const bodyParser = require('body-parser');
 
 
+const router = express.Router();
 
-router.post('/hospital_user_update',  (req, res)=>{
+router.use(bodyParser.json());
+
+
+
+router.post('/hospital_user_update', async (req, res)=>{
     
     
     
-    var id = req.body.id.toString()
+    var id = req.body.id.toString();
 
-    var objectId = db.getPrimaryKey(id)
+    var objectId = db.getPrimaryKey(id);
 
 
     
-    db.getDB().collection('users').find({_id: objectId}).toArray((err, theUser) => {
+   await db.getDB().collection('users').find({_id: objectId}).toArray((err, theUser) => {
         
         if(err){
-            Console.error(err)
+            Console.error(err);
+            res.end(500);
         } else{
-            var validated = parseInt(theUser[0].validated, 10)
+            var validated = parseInt(theUser[0].validated, 10);
 
             if( validated == 0){
+               
                 db.getDB().collection('users').updateOne({_id: objectId}, {
                     $inc: {
                         "validated": 1
                     }
                 })
+
+                res.sendStatus(200)
                
             }else if(validated < 4){
                 db.getDB().collection('users').updateOne({_id: objectId}, {
@@ -40,14 +44,19 @@ router.post('/hospital_user_update',  (req, res)=>{
                         "validated": +1
                     }
                 })
+
+                res.sendStatus(200)
                 
             } else{
                 console.error('allready CHECKED')
+                res.sendStatus(403)
             }
            
-            res.send("statut " + validated)
-
+          
         }
+
+       
+
 
     })
 })

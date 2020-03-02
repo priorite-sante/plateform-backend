@@ -7,7 +7,6 @@ const db = require("./DB/db");
 
 ///ADMIN
 const createUser = require("./routes/admin/create/create_user")
-const createHostpital = require("./routes/admin/create/create_hopital")
 const adminUserSearch = require("./routes/admin/find/find_user")
 
 ///HOSPITAL
@@ -29,7 +28,6 @@ const app = express()
 
 ///ADMIN
 app.use(createUser)
-app.use(createHostpital)
 app.use(adminUserSearch)
 
 ///HOSPITAL
