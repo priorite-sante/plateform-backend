@@ -54,10 +54,8 @@ app.use((req, res, next)=>{
 
 
 
-app.post('/', (req, res)=>{
-    
-    
-    res.json(req.body)
+app.get('/', (req, res)=>{
+   res.send('you are on priorité-santé')
 })
 
 
