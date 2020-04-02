@@ -43,6 +43,8 @@ var findUserById = router.post('/admin_find_user_by_id', async (req, res)=>{
 ///
 
 
+
+
 var findUserByName = router.post('/admin_find_user_by_name', async (req, res)=>{
 
   var name = req.body.name.toString()
@@ -66,6 +68,39 @@ var findUserByName = router.post('/admin_find_user_by_name', async (req, res)=>{
 })
 
 
+var getAllUser = router.get('/getalluser', (req,res)=>{
+
+  await db.getDB().collection('users').find({}).toArray((err, user)=>{
+    if(err) {
+      console.error(err)
+      res.sendStatus(500);
+    }
+    
+    else {
+        res.json(user)
+    }
+   
+
+})
+})
+
+var getAllUser = router.get('/getalluser', (req,res)=>{
+
+  await db.getDB().collection('users').find({}).toArray((err, user)=>{
+    if(err) {
+      console.error(err)
+      res.sendStatus(500);
+    }
+    
+    else {
+        res.json(user)
+    }
+   
+
+})
+})
 
 
-module.exports =[findUserById, findUserByName]
+
+
+module.exports =[findUserById, findUserByName,  getAllUser ]
