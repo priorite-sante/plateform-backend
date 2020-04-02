@@ -71,7 +71,7 @@ db.connect((err)=>{
     // If err unable to connect to database
     // End application
     if(err){
-        console.log('unable to connect to database' + err);
+        console.log('unable to connect to database ' + err);
         process.exit(1);
     }
     // Successfully connected to database
