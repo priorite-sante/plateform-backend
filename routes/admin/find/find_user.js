@@ -68,7 +68,7 @@ var findUserByName = router.post('/admin_find_user_by_name', async (req, res)=>{
 })
 
 
-var getAllUser = router.get('/getalluser', (req,res)=>{
+var getAllUser = router.get('/getalluser',async (req,res)=>{
 
   await db.getDB().collection('users').find({}).toArray((err, user)=>{
     if(err) {
