@@ -1,6 +1,8 @@
 const express = require('express')
 const db = require("./DB/db");
 
+const port = process.env.PORT || 3000;
+
 ///routes
 ///
 ///
@@ -34,6 +36,19 @@ app.use(adminUserSearch)
 app.use(hospital_search_user)
 app.use(hospitalUserUpdate)
 
+app.use((req, res, next)=>{
+    res.header("Access-Control-Allow-Origin", "*")
+
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+    )
+
+    if(req.method ==='OPTIONS'){
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE')
+
+        return res.statusCode(200).json({})
+    }
+    next()
+})
 
 
 
@@ -63,7 +78,7 @@ db.connect((err)=>{
     // Start up our Express Application
     // And listen for Request
     else{
-        app.listen(3000,()=>{
+        app.listen(port,()=>{
             console.log('connected to database, app listening on port 3000');
         });
     }
