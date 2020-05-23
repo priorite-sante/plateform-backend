@@ -49,7 +49,7 @@ var user_login_name = router.post('/user/login_whith_name',  (req, res)=>{
     }
     
     else {
-        res.json(user)
+       res.status(200)
     }
    
 
