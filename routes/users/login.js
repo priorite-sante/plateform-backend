@@ -36,11 +36,11 @@ var user_login_qr = router.post('/user/login_with_qr', async (req, res)=>{
 
 })
 
-var user_login_name = router.post('/user/login_whith_name',  (req, res)=>{
+var user_login_name = router.post('/user/login_whith_name',  (req, res) =>{
 
   var name = req.body.name.toString()
   var password = req.body.password.toString()
-  console.log(hash)
+
   
   db.getDB().collection('users').find({ name: name, password: password}).toArray((err, user)=>{
     if(err) {
@@ -49,7 +49,7 @@ var user_login_name = router.post('/user/login_whith_name',  (req, res)=>{
     }
     
     else {
-       res.status(200)
+       res.sendStatus(200)
     }
    
 
