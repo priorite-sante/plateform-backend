@@ -9,7 +9,7 @@ router.use(bodyParser.json())
 ///FIND USER BY ID
 ///
 ///
-var user_login_qr = router.post('/user_login', async (req, res)=>{
+var user_login_qr = router.post('/user/login_with_qr', async (req, res)=>{
 
     var id = req.body.id.toString()
 
@@ -36,11 +36,10 @@ var user_login_qr = router.post('/user_login', async (req, res)=>{
 
 })
 
-var user_login_name = router.post('/user_login_name',  (req, res)=>{
+var user_login_name = router.post('/user/login_whith_name',  (req, res)=>{
 
   var name = req.body.name.toString()
   var password = req.body.password.toString()
-  const hash = crypto.createHash('sha256').update(password);
   console.log(hash)
   
   db.getDB().collection('users').find({ name: name, password: password}).toArray((err, user)=>{
