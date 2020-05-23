@@ -40,15 +40,19 @@ var user_login_name = router.post('/user/login_whith_name',  (req, res) =>{
 
   var name = req.body.name.toString()
   var password = req.body.password.toString()
-
+  let emptyArray = []
   
   db.getDB().collection('users').find({ name: name, password: password}).toArray((err, user)=>{
     if(err) {
       console.error(err)
       res.sendStatus(500);
+
+    } else if (user.length ===0){
+      res.sendStatus(500); 
     }
     
-    else {
+    else  {
+       console.log(user)
        res.sendStatus(200)
     }
    
