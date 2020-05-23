@@ -45,13 +45,13 @@ var findUserById = router.post('/admin_find_user_by_id', async (req, res)=>{
 
 
 
-var findUserByName = router.post('/admin_find_user_by_name', async (req, res)=>{
+var findUserByName = router.post('/admin_find_user_by_name',  (req, res)=>{
 
   var name = req.body.name.toString()
 
 
   
-  await db.getDB().collection('users').find({ name: name}).toArray((err, user)=>{
+  db.getDB().collection('users').find({ name: name}).toArray((err, user)=>{
       if(err) {
         console.error(err)
         res.sendStatus(500);
@@ -68,9 +68,9 @@ var findUserByName = router.post('/admin_find_user_by_name', async (req, res)=>{
 })
 
 
-var getAllUser = router.get('/getalluser',async (req,res)=>{
+var getAllUser = router.get('/getalluser', (req,res)=>{
 
-  await db.getDB().collection('users').find({}).toArray((err, user)=>{
+   db.getDB().collection('users').find({}).toArray((err, user)=>{
     if(err) {
       console.error(err)
       res.sendStatus(500);
@@ -84,21 +84,6 @@ var getAllUser = router.get('/getalluser',async (req,res)=>{
 })
 })
 
-var getAllUser = router.get('/getalluser', async(req,res)=>{
-
-  await db.getDB().collection('users').find({}).toArray((err, user)=>{
-    if(err) {
-      console.error(err)
-      res.sendStatus(500);
-    }
-    
-    else {
-        res.json(user)
-    }
-   
-
-})
-})
 
 
 

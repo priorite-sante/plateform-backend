@@ -15,6 +15,10 @@ const adminUserSearch = require("./routes/admin/find/find_user")
 const hospital_search_user = require("./routes/hospital/users/search_user")
 const hospitalUserUpdate = require("./routes/hospital/users/update_user")
 
+///USER
+
+const userLogin =require("./routes/users/login")
+
 
 
 
@@ -35,6 +39,7 @@ app.use(adminUserSearch)
 ///HOSPITAL
 app.use(hospital_search_user)
 app.use(hospitalUserUpdate)
+app.use(userLogin)
 
 app.use((req, res, next)=>{
     res.header("Access-Control-Allow-Origin", "*")
