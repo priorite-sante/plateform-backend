@@ -9,7 +9,7 @@ router.use(bodyParser.json())
 ///FIND USER BY ID
 ///
 ///
-var user_login_qr = router.post('/user/login_with_qr', async (req, res)=>{
+var user_login_qr = router.post('/user/login_with_qr', (req, res)=>{
 
     var id = req.body.id.toString()
 
@@ -19,15 +19,14 @@ var user_login_qr = router.post('/user/login_with_qr', async (req, res)=>{
     ///SEARCH USER WITH THE ID PROVIDED BY QRCODE
     ///
     ///
-    await db.getDB().collection('users').find({_id: objectId}).toArray((err, user)=>{
+    db.getDB().collection('users').find({_id: objectId}).toArray((err, user)=>{
         if(err) {
           console.error(err)
           res.sendStatus(500);
         }
         
         else {
-            res.json(user)
-            res.status(200)
+            res.sendStatus(200)
         }
        
 
