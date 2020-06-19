@@ -32,14 +32,6 @@ const app = express()
 ///
 
 ///ADMIN
-app.use(create)
-app.use(adminUserSearch)
-
-///HOSPITAL
-
-app.use(hospitalUserUpdate)
-app.use(userLogin)
-
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Credentials", true);
@@ -53,6 +45,15 @@ app.use((req, res, next) => {
     }
     next()
 })
+
+
+app.use(create)
+app.use(adminUserSearch)
+
+///HOSPITAL
+
+app.use(hospitalUserUpdate)
+app.use(userLogin)
 
 
 
