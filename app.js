@@ -19,6 +19,9 @@ const hospitalUserUpdate = require("./routes/hospital/user_verification");
 const userLogin = require("./routes/users/login");
 
 
+const adminLogin = require("./routes/admin/login")
+
+
 
 
 
@@ -42,6 +45,8 @@ app.use(adminUserSearch);
 
 app.use(hospitalUserUpdate);
 app.use(userLogin);
+
+app.use(adminLogin);
 
 
 
