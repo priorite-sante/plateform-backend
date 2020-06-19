@@ -1,7 +1,7 @@
 const express = require('express');
-const db = require('../../../DB/db');
-
 const bodyParser = require('body-parser');
+const db = require('../../db/db');
+
 
 
 const router = express.Router();
@@ -20,7 +20,7 @@ router.post('/hospital_user_update', async (req, res)=>{
 
 
     
-   await db.getDB().collection('users').find({_id: objectId}).toArray((err, theUser) => {
+    db.getDB().collection('users').find({_id: objectId}).toArray((err, theUser) => {
         
         if(err){
             Console.error(err);
@@ -53,6 +53,7 @@ router.post('/hospital_user_update', async (req, res)=>{
             }
            
           
+
         }
 
        

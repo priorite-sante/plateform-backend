@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require('../../../DB/db')
+const db = require('../../DB/db')
 
 const bodyParser = require('body-parser')
 
@@ -12,7 +12,7 @@ router.use(bodyParser.json())
 ///FIND USER BY ID
 ///
 ///
-var findUserById = router.post('/admin_find_user_by_id', async (req, res)=>{
+var findUserById = router.post('/user/find/by_id', async (req, res)=>{
 
     var id = req.body.id.toString()
 
@@ -45,7 +45,7 @@ var findUserById = router.post('/admin_find_user_by_id', async (req, res)=>{
 
 
 
-var findUserByName = router.post('/admin_find_user_by_name',  (req, res)=>{
+var findUserByName = router.post('/user/find/by_name',  (req, res)=>{
 
   var name = req.body.name.toString()
 
@@ -68,7 +68,7 @@ var findUserByName = router.post('/admin_find_user_by_name',  (req, res)=>{
 })
 
 
-var getAllUser = router.get('/getalluser', (req,res)=>{
+var getAllUser = router.get('/user/find/getall', (req,res)=>{
 
    db.getDB().collection('users').find({}).toArray((err, user)=>{
     if(err) {
