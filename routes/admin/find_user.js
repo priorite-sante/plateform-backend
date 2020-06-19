@@ -1,5 +1,5 @@
 const express = require('express')
-const db = require('../../DB/db')
+const db = require('../../database/db')
 
 const bodyParser = require('body-parser')
 

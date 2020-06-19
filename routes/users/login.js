@@ -2,7 +2,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const router = express.Router()
 const crypto = require('crypto')
-const db = require('../../DB/db')
+const db = require('../../database/db')
 
 router.use(bodyParser.json())
 
