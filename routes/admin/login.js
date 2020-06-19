@@ -32,6 +32,6 @@ var adminLogin = router.post('/admin/login', (req, res) => {
 });
 
 
-module.exports = adminLogin;
+module.exports = [adminLogin];
 
 
