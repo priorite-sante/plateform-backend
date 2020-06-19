@@ -3,8 +3,8 @@ const ObjectID = require('mongodb').ObjectID;
 // name of our database
 const dbname = "sante";
 // location of where our mongoDB database is located
-const urlbs = "mongodb://localhost:27017/";
-const url = "mongodb+srv://luc:wC4l2wF1wD5V6R7k@cluster0-vbtlh.mongodb.net/test?retryWrites=true&w=majority"
+const url = "mongodb://localhost:27017/";
+const urls = "mongodb+srv://luc:wC4l2wF1wD5V6R7k@cluster0-vbtlh.mongodb.net/test?retryWrites=true&w=majority"
 // Options for mongoDB
 const mongoOptions = {useNewUrlParser : true , useUnifiedTopology: true };
 
@@ -26,7 +26,7 @@ const connect = (cb) =>{
             // Successfully got our database connection
             // Set database connection and call CB
             else{
-                state.db = client.db(dbname);
+            state.db = client.db(dbname);
                 cb();
             }
         });
