@@ -35,13 +35,13 @@ const app = express()
 ///ADMIN
 app.use(cors());
 
-app.use(create)
-app.use(adminUserSearch)
+app.use(create);
+app.use(adminUserSearch);
 
 ///HOSPITAL
 
-app.use(hospitalUserUpdate)
-app.use(userLogin)
+app.use(hospitalUserUpdate);
+app.use(userLogin);
 
 
 
