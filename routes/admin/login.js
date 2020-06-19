@@ -12,7 +12,7 @@ var adminLogin = router.post('/admin/login', (req, res) => {
 
     var email = req.body.email.toString()
     var password = req.body.password.toString()
-    let emptyArray = []
+    
 
     db.getDB().collection('admin').find({ email: email, password: password }).toArray((err, user) => {
         if (err) {
