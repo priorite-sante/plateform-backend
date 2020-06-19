@@ -11,7 +11,7 @@ router.use(bodyParser.json())
 ///create user
 ///
 ///
-var createUser = router.post("/create_user", async (req, res) => {
+var createUser = router.post("/user/create", async (req, res) => {
 
 
   request = req.body
@@ -33,7 +33,7 @@ var createUser = router.post("/create_user", async (req, res) => {
 ///create hospital
 ///
 ///
-var createHospital = router.post("/create_hospital", async (req, res) => {
+var createHospital = router.post("/hospital/create", async (req, res) => {
 
 
   const request = req.body
