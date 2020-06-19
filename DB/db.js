@@ -1,5 +1,5 @@
-const MongoClient = require("./node_modules/mongodb").MongoClient;
-const ObjectID = require('./node_modules/mongodb').ObjectID;
+const MongoClient = require("mongodb").MongoClient;
+const ObjectID = require("mongodb").ObjectID;
 
 // name of our database
 const dbname = "sante";
