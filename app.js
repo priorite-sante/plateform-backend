@@ -1,30 +1,25 @@
 const express = require('express');
-var cors = require('cors');
+const cors = require('cors');
 const db = require("./database/db");
+const bodyParser = require('body-parser');
 
 const port = process.env.PORT || 3000;
 
 ///routes
 ///
-
 const create = require("./routes/admin/create");
 const adminUserSearch = require("./routes/admin/find_user");
-
 ///HOSPITAL
-
 const hospitalUserUpdate = require("./routes/hospital/user_verification");
-
 ///USER
-
 const userLogin = require("./routes/users/login");
-
-
 const adminLogin = require("./routes/admin/login")
 
 
 
 
-
+///UTILS
+const uploadImage = require("./utils/upload_image")
 
 
 const app = express()
@@ -37,6 +32,11 @@ const app = express()
 
 ///ADMIN
 app.use(cors());
+app.use(bodyParser.urlencoded({extended: true}))
+app.use('/uploads', express.static('uploads'));
+
+app.use(uploadImage)
+
 
 app.use(create);
 app.use(adminUserSearch);
