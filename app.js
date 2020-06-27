@@ -2,8 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const db = require("./database/db");
 const bodyParser = require('body-parser');
-
-const port = process.env.PORT || 3000;
+const helmet = require('helmet');
 
 ///routes
 ///
@@ -19,12 +18,14 @@ const adminLogin = require("./routes/admin/login")
 
 
 ///UTILS
-const uploadImage = require("./utils/upload_image")
+const uploadImage = require("./utils/upload_image");
 
 
-const app = express()
+
+const app = express();
 
 
+const port = process.env.PORT || 3000;
 
 ///ROUTES 
 ///
@@ -32,6 +33,7 @@ const app = express()
 
 ///ADMIN
 app.use(cors());
+app.use(helmet());
 app.use(bodyParser.urlencoded({extended: true}))
 app.use('/uploads', express.static('uploads'));
 
