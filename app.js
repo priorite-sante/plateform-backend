@@ -4,58 +4,32 @@ const db = require("./database/db");
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
 
-///routes
-///
-const create = require("./routes/admin/create");
-const adminUserSearch = require("./routes/admin/find_user");
-///HOSPITAL
-const hospitalUserUpdate = require("./routes/hospital/user_verification");
-///USER
-const userLogin = require("./routes/users/login");
-const adminLogin = require("./routes/admin/login")
 
-
-
-
-///UTILS
-const uploadImage = require("./utils/upload_image");
+const routes = require("./routes/routes");
+const utils= require("./utils/utils");
 
 
 
 const app = express();
-
-
 const port = process.env.PORT || 3000;
 
-///ROUTES 
-///
-///
 
-///ADMIN
 app.use(cors());
 app.use(helmet());
-app.use(bodyParser.urlencoded({extended: true}))
+app.use(bodyParser.urlencoded({extended: true}));
 app.use('/uploads', express.static('uploads'));
 
-app.use(uploadImage)
+app.use(routes);
+app.use(utils);
 
 
-app.use(create);
-app.use(adminUserSearch);
-
-///HOSPITAL
-
-app.use(hospitalUserUpdate);
-app.use(userLogin);
-
-app.use(adminLogin);
 
 
 
 
 
 app.get('/', (req, res) => {
-    res.send('you are on priorité-santé')
+    res.send('you are on priorité-santé');
 })
 
 
