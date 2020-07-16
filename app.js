@@ -40,18 +40,15 @@ app.get('/', (req, res) => {
 ///
 
 db.connect((err) => {
-    // If err unable to connect to database
-    // End application
     if (err) {
         console.log('unable to connect to database ' + err);
         process.exit(1);
     }
-    // Successfully connected to database
-    // Start up our Express Application
-    // And listen for Request
     else {
         app.listen(port, () => {
+            
             console.log('connected to database, app listening on port 3000');
+     
         });
     }
 });
